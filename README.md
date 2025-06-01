@@ -43,5 +43,5 @@ Developed as a school project
 
 You can download or use the pretrained summarization model here:
 
-👉 [Hugging Face Model Repository] (https://huggingface.co/RamiBadleh/bart-news-summarizer/tree/main)
+👉 [Hugging Face Model Repository] (https://huggingface.co/RamiBadleh/bart-news-summarizer)
 
