@@ -38,3 +38,10 @@ ACKNOWLEDGMENTS
 Hugging Face Transformers
 CNN/DailyMail Dataset
 Developed as a school project
+
+## 🔗 Pretrained Model
+
+You can download or use the pretrained summarization model here:
+
+👉 [Hugging Face Model Repository] (https://huggingface.co/RamiBadleh/bart-news-summarizer/tree/main)
+
