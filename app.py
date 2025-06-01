@@ -1,10 +1,17 @@
 import streamlit as st
-from transformers import BartTokenizer, BartForConditionalGeneration
+from transformers import BartTokenizer, BartForConditionalGeneration, BartConfig
 
 # Load model and tokenizer from Hugging Face Hub
 model_name = "RamiBadleh/bart-news-summarizer"
 tokenizer = BartTokenizer.from_pretrained(model_name)
-model = BartForConditionalGeneration.from_pretrained(model_name)
+
+# Load config and fix early_stopping
+config = BartConfig.from_pretrained(model_name)
+if getattr(config, "early_stopping", None) not in [True, False, "never"]:
+    config.early_stopping = True
+
+model = BartForConditionalGeneration.from_pretrained(model_name, config=config)
+
 
 # 🔧 Fix issue: force early_stopping to True if None
 if model.generation_config.early_stopping is None:
