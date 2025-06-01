@@ -28,7 +28,10 @@ if st.button("Summarize"):
         st.warning("Please enter some text to summarize.")
     else:
         
-        inputs = tokenizer.encode(article_text, return_tensors='pt', max_length=1024, truncation=True)
+        inputs = tokenizer(article, return_tensors="pt", max_length=1024, truncation=True)
+
+        
+
         summary_ids = model.generate(inputs, num_beams=4, max_length=150, min_length=30, early_stopping=True)
         summary = tokenizer.batch_decode(summary_ids, skip_special_tokens=True)[0]
 
