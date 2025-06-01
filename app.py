@@ -6,6 +6,10 @@ model_name = "RamiBadleh/bart-news-summarizer"
 tokenizer = BartTokenizer.from_pretrained(model_name)
 model = BartForConditionalGeneration.from_pretrained(model_name)
 
+# 🔧 Fix issue: force early_stopping to True if None
+if model.generation_config.early_stopping is None:
+    model.generation_config.early_stopping = True
+
 # Streamlit app layout
 st.set_page_config(page_title="News Article Summarizer")
 st.title("📰 News Article Summarizer")
@@ -26,7 +30,7 @@ if st.button("Summarize"):
             num_beams=4,
             max_length=150,
             min_length=30,
-            early_stopping=True
+            early_stopping=True  # You can keep this here or remove it since we fixed the config
         )
         summary = tokenizer.batch_decode(summary_ids, skip_special_tokens=True)[0]
 
