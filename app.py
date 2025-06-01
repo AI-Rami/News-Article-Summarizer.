@@ -11,12 +11,10 @@ import os
 # to get the current directory of the app.py script
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
-# this wil define the model path 
-model_path = os.path.join(current_dir, 'bart_summarization_model')
 
 # loading  the model and the tokenizer
-model = BartForConditionalGeneration.from_pretrained(model_path)
-tokenizer = BartTokenizer.from_pretrained(model_path)
+model = BartForConditionalGeneration.from_pretrained("RamiBadleh/bart-news-summarizer")
+tokenizer = BartTokenizer.from_pretrained("RamiBadleh/bart-news-summarizer")
 
 #  title
 st.title(" News Article Summarizer")
