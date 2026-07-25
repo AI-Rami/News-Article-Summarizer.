@@ -1,47 +1,73 @@
-📰 News Article Summarizer
+# News Article Summarizer
 
-This project is a web-based application that summarizes long news articles using state-of-the-art Natural Language Processing (NLP) techniques. It leverages the BART transformer model (facebook/bart-large-cnn) and the CNN/DailyMail dataset to automatically generate concise, readable summaries.
+A Streamlit application that generates concise summaries of news articles using a BART transformer model. This academic project demonstrates how a trained NLP model can be packaged behind a simple user interface.
 
-The app was developed as part of a school project and showcases how modern NLP models can be applied to real-world text processing tasks. It includes a custom preprocessing pipeline that handles articles exceeding the model’s token limit by applying sentence-based chunking.
+## What this project demonstrates
 
-FEATURES
+- Transformer-based text summarization
+- Hugging Face Transformers and PyTorch
+- Preparing and tokenizing text for sequence-to-sequence models
+- Publishing a trained model on Hugging Face Hub
+- Loading a remote model for inference
+- Building an interactive Streamlit interface
 
-Summarizes long news articles automatically
-Uses the BART transformer model for text generation
-Implements sentence-based chunking for inputs over 1024 tokens
-Pretrained model fine-tuned on CNN/DailyMail dataset
-Structured, modular Python codebase for easy extension or UI integration
-TECH STACK
+## How it works
 
-Python
-Hugging Face Transformers
-PyTorch
-CNN/DailyMail Dataset
-Jupyter Notebook (for training and testing)
-Streamlit for deployment
-PROJECT STRUCTURE
+```text
+Article text
+    ↓
+BART tokenizer
+    ↓
+Fine-tuned BART model
+    ↓
+Beam-search generation
+    ↓
+Readable summary
+```
 
-News-Article-Summarizer/ ├── app.py ├── trained_bart_summarization_model/ ├── news_summarizer_notebook.ipynb ├── requirements.txt ├── README.txt
+The Streamlit application loads the model and tokenizer from Hugging Face, accepts article text and generates a summary with configurable generation constraints.
 
-HOW IT WORKS
+## Technology
 
-Load 500 articles from CNN/DailyMail
-Preprocess: tokenize, chunk long inputs, and pad sequences
-Feed into BART model
-Decode output into summaries
-LICENSE
+- Python
+- PyTorch
+- Hugging Face Transformers
+- BART
+- Streamlit
+- Jupyter Notebook
+- CNN/DailyMail dataset
 
-This project is licensed under the MIT License.
+## Model
 
-ACKNOWLEDGMENTS
+The model is available on Hugging Face:
 
-Hugging Face Transformers
-CNN/DailyMail Dataset
-Developed as a school project
+[RamiBadleh/bart-news-summarizer](https://huggingface.co/RamiBadleh/bart-news-summarizer)
 
-## 🔗 Pretrained Model
+## Run locally
 
-You can download or use the pretrained summarization model here:
+```bash
+git clone https://github.com/AI-Rami/News-Article-Summarizer..git
+cd News-Article-Summarizer.
+pip install -r requirements.txt
+streamlit run app.py
+```
 
-👉 [Hugging Face Model Repository] (https://huggingface.co/RamiBadleh/bart-news-summarizer)
+The first launch downloads the model, so startup time depends on the machine and network connection.
 
+## Repository contents
+
+- `app.py`: Streamlit inference interface
+- `news_summarizer_notebook.ipynb`: model-development workflow
+- `requirements.txt`: Python dependencies
+
+## Limitations
+
+The current application truncates inputs to the model's maximum input length during inference. A production version should add robust long-document chunking, evaluation against reference summaries, caching, error handling and deployment monitoring.
+
+## Context
+
+Developed as an academic NLP project at Inland Norway University of Applied Sciences.
+
+## Author
+
+Rami — AI bachelor student with a professional background in chemistry, pharmaceutical quality control and regulated technical environments.
